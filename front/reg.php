@@ -22,11 +22,50 @@
     </tr>
     <tr>
         <td>
-            <button>註冊</button>
-            <button>清除</button>
+            <button onclick='reg()'>註冊</button>
+            <button onclick='reset()'>清除</button>
         </td>
         <td></td>
     </tr>
 </table>
 
 </fieldset>
+
+<script>
+function reset(){
+    $("#acc,#pw,#pw2,#email").val('')
+}
+
+function reg(){
+    let user={
+        acc:$("#acc").val(),
+        pw:$("#pw").val(),
+        pw2:$("#pw2").val(),
+        email:$("#email").val(),
+    }
+
+    if(user.acc === '' || user.pw === '' || user.pw2 === '' || user.email === ''){
+        //有空白
+        alert('不可空白')
+
+    }else{
+        //沒空白
+        if(user.pw==user.pw2){
+            //相同
+            $.post("./api/chk_acc.php",user,(result)=>{
+                if(parseInt(result) === 1){
+                    //重覆
+                    alert("帳號重覆")
+                }else{
+                    //不重覆
+                    新增帳號
+                    alert("註冊完成，歡迎加入")
+                }
+            })
+        }else{  
+            //不相同
+            alert("密碼錯誤")
+        }
+    }
+}
+</script>

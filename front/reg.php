@@ -58,8 +58,10 @@ function reg(){
                     alert("帳號重覆")
                 }else{
                     //不重覆
-                    新增帳號
-                    alert("註冊完成，歡迎加入")
+                    $.post("./api/reg.php",user,()=>{
+                        alert("註冊完成，歡迎加入")
+                        reset();
+                    })
                 }
             })
         }else{  

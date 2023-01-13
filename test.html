@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-1.9.1.min.js"></script>
+    <style>
+        .good{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <span class="user">0</span>個人說
+    <span class="good">讚</span>
+</body>
+</html>
+
+<script>
+$(".good").on("click",function(){
+    let user
+    switch($(this).text()){
+        case "讚":
+            $(this).css({color:'blue'})
+            $(this).text("收回讚")
+            user=parseInt($(".user").text())
+            $(".user").text(user+1);
+            $.post(".php",{user,news,action},()=>{
+                
+            })
+        break;
+        case "收回讚":
+            $(this).css({color:'black'})
+            $(this).text("讚")
+            user=parseInt($(".user").text())
+            $(".user").text(user-1);
+        break;
+    }
+})
+
+</script>

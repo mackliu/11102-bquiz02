@@ -4,11 +4,12 @@
 <div class="subject">
     問卷名稱
     <input type="text" name="subject" id="">
+    <input type="hidden" name="ser" value="<?=md5(rand(1,10000000000))?>">
 </div>
 <div class="options">
     <div>
         <label>選項</label>
-        <input type="text" name="option" id="">
+        <input type="text" name="option[]" id="">
     </div>
 </div>
 <input type="submit" value="新增">
@@ -20,7 +21,7 @@
 function moreOpt(){
     let opt=`<div>
                 <label>選項</label>
-                <input type="text" name="option" id="">
+                <input type="text" name="option[]" id="">
             </div>`;
             
     $(".options").append(opt);

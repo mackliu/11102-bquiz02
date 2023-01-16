@@ -1,3 +1,4 @@
+<?php include_once "base.php";?>
 <style>
     .full{
         display: none;
@@ -90,6 +91,4 @@
         $(this).next().children('.short,.full').toggle()
         // $(this).next().children('.full').toggle()
     })
-
-    goodsEvent('news')
 </script>

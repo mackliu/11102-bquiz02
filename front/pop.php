@@ -123,5 +123,6 @@
 
     )
 
+    goodsEvent('pop');
 
 </script>

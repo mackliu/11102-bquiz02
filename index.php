@@ -60,7 +60,7 @@
 						}
 					?>
 					</span>
-                    <div class="">
+                    <div class="content">
 						<?php
 							$do=$_GET['do']??'home';
 							$file="./front/".$do.".php";

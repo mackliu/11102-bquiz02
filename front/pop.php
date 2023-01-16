@@ -61,9 +61,16 @@
                      */
 
                     if(isset($_SESSION['login'])){
-                        echo "<a href='#' class='goods' data-user='{$_SESSION['login']}' data-news='{$row['id']}'>";
-                        echo "讚";
-                        echo "</a>";
+                        if($Log->count(['news'=>$row['id'],'user'=>$_SESSION['login']])>0){
+                            echo "<a href='#' class='goods' data-user='{$_SESSION['login']}' data-news='{$row['id']}'>";
+                            echo "收回讚";
+                            echo "</a>";
+
+                        }else{
+                            echo "<a href='#' class='goods' data-user='{$_SESSION['login']}' data-news='{$row['id']}'>";
+                            echo "讚";
+                            echo "</a>";
+                        }
                     }
                 ?>
 

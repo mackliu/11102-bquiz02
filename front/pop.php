@@ -1,3 +1,23 @@
+<style>
+    .full{
+        display: none;
+        position:absolute;
+        background-color: rgb(100,100,100);
+        z-index: 99;
+        padding:1rem;
+        box-shadow: 0 0 10px #999;
+        left:-10px;
+        top:5px;
+        width:95%;
+        height:500px;
+        overflow: auto;
+    }
+
+    .news-title{
+        cursor: pointer;
+        background-color: #eee;
+    }
+</style>
 <fieldset>
     <legend>目前位置：首頁 > 人氣文章區</legend>
 
@@ -19,8 +39,16 @@
 
     ?>
         <tr>
-            <td><?=$row['title'];?></td>
-            <td><?=mb_substr($row['text'],0,20);?>...</td>
+        <td class='news-title'><?=$row['title'];?></td>
+            <td style='position:relative'>
+                <div class="short"><?=mb_substr($row['text'],0,20);?>...</div>
+                <div class="full">
+                    <?php
+                    echo "<div style='color:skyblue'>".$row['type']."</div>";
+                    echo "<div style='color:white'>".nl2br($row['text'])."</div>";
+                    ?>
+                </div>
+            </td>
             <td></td>
         </tr>
     <?php
@@ -48,3 +76,25 @@
     </div>
 
 </fieldset>
+<script>
+    $(".news-title").hover(
+        function(){
+        
+            $(this).next().children('.full').show()
+        
+        },
+
+        function(){
+            $(this).next().children('.full').hide()
+        }
+    )
+    $(".full").hover(
+        function(){
+            $(this).show();
+        },
+        function(){
+            $(this).hide();
+        }
+
+    )
+</script>

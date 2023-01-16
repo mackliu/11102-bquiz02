@@ -34,7 +34,22 @@
                 <div class="short"><?=mb_substr($row['text'],0,20);?>...</div>
                 <div class="full"><?=nl2br($row['text']);?></div>
             </td>
-            <td></td>
+            <td>
+                <?php
+                    /**
+                     * 1.點擊後要紀錄使用者對那一篇文章點了讚或收回讚
+                     * 2.點擊後要根據讚或收回讚去改變文章的good欄位
+                     */
+
+                    if(isset($_SESSION['login'])){
+                        echo "<a href='#' class='goods' data-user='{$_SESSION['login']}' data-news='{$row['id']}'>";
+                        echo "讚";
+                        echo "</a>";
+                    }
+                ?>
+
+            </td>                
+            </td>
         </tr>
     <?php
     }

@@ -31,7 +31,9 @@ $(".type").on("click",function(){
 
 function getList(type){
     $.get("./api/get_list.php",{type},(list)=>{
-        $("#content").html(list);
+        list=JSON.parse(list)
+        console.log(list)
+        //$("#content").html(list);
     })
 }
 

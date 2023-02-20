@@ -32,14 +32,14 @@ $(".type").on("click",function(){
 function getList(type){
     $.get("./api/get_list.php",{type},(list)=>{
         list=JSON.parse(list)
-        console.log(list)
-        //$("#content").html(list);
+        //console.log(list)
+        $("#content").html(list);
     })
 }
 
 function getNews(id){
     $.get("./api/get_news.php",{id},(news)=>{
-        console.log(news)
+        //console.log(news)
         $("#content").html(news);
     })
 }
